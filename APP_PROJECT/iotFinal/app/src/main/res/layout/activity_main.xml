@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen"
+    android:padding="16dp">
+
+    <!-- Tiêu đề lớn hơn, tô màu tím -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:textColor="@color/brandPurple"
+        android:letterSpacing="0.02"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cardDoor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardDoor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="6dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@color/cardTint"
+        app:strokeColor="@color/brandPurple"
+        app:strokeWidth="1dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintBottom_toTopOf="@id/btnToggleDoor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Hàng trạng thái: hình tròn + chữ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <View
+                    android:id="@+id/viewStatus"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/status_circle" />
+
+                <TextView
+                    android:id="@+id/tvDoorState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Trạng thái: ..."
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="Trạng thái: CLOSED" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvLastEventName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Người quẹt gần nhất: --"
+                android:textColor="@color/textSecondary"
+                android:textSize="14sp"
+                tools:text="Người quẹt gần nhất: Nguyễn Văn A" />
+
+            <TextView
+                android:id="@+id/tvLastEventId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID: --"
+                android:textColor="@color/textSecondary"
+                android:textSize="14sp"
+                tools:text="ID: AA11BB22" />
+
+            <TextView
+                android:id="@+id/tvLastEventTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lúc: --"
+                android:textColor="@color/textSecondary"
+                android:textSize="14sp"
+                tools:text="Lúc: 23/10/2025 14:30" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- Hai nút: chia đều bề ngang, mỗi nút một màu -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnToggleDoor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="52dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/btn_toggle"
+        android:textColor="@android:color/white"
+        app:cornerRadius="26dp"
+        app:backgroundTint="@color/brandPurple"
+        app:layout_constraintTop_toBottomOf="@id/cardDoor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnAddCard"
+        app:layout_constraintHorizontal_weight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:minHeight="52dp"
+        android:text="@string/btn_add_card"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@color/brandTeal"
+        app:cornerRadius="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/btnToggleDoor"
+        app:layout_constraintTop_toBottomOf="@id/cardDoor"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,21 @@
+<resources>
+    <color name="md_theme_light_primary">#6750A4</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_dark_primary">#D0BCFF</color>
+    <!-- Palette thương hiệu -->
+    <color name="brandPurple">#6C4AB6</color>
+    <color name="brandTeal">#00BFA6</color>
+    <color name="brandPink">#FF6FAE</color>
+
+    <!-- Nền & thẻ -->
+    <color name="bgGradientStart">#F6F0FF</color>
+    <color name="bgGradientEnd">#F0FBF8</color>
+    <color name="cardTint">#ECE6F6</color> <!-- tím nhạt -->
+
+    <color name="textPrimary">#212121</color>
+    <color name="textSecondary">#666666</color>
+    <color name="statusOpen">#23C784</color>   <!-- xanh lục ngọc -->
+    <color name="statusClosed">#E74C3C</color> <!-- đỏ -->
+</resources>
+
+

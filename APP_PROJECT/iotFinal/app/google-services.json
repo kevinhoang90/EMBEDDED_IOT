@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "197913488607",
+    "firebase_url": "https://iotfinal-a8fad-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "iotfinal-a8fad",
+    "storage_bucket": "iotfinal-a8fad.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197913488607:android:ab328c90ff3e78b7c18d6a",
+        "android_client_info": {
+          "package_name": "com.example.smartdoor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNnfR-wj9-cD0GUA4xVmTDAOT9SLHxkV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
