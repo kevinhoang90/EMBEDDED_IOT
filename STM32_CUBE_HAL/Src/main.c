@@ -18,8 +18,6 @@ typedef enum {
   ST_POST_ADD_CARD
 } app_state_t;
 
-#define DOOR_GPIO_Port   GPIOB
-#define DOOR_Pin         GPIO_PIN_1
 #define LED_GPIO_Port    GPIOC
 #define LED_Pin          GPIO_PIN_13
 #define OPEN_TIMEOUT_MS  5000
@@ -41,14 +39,12 @@ static uint8_t addcard_mode = 0;
 
 
 static void door_open(void)  {
-  HAL_GPIO_WritePin(DOOR_GPIO_Port, DOOR_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-  //HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 1000);
+  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 1000);
 }
 static void door_close(void) {
-  HAL_GPIO_WritePin(DOOR_GPIO_Port, DOOR_Pin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-  //HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 2000);
+  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 2000);
 }
 
 static void uid_to_hex8(const uint8_t* u4, char* out8) {
