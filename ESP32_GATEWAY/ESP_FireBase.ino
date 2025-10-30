@@ -37,7 +37,7 @@ String getLocalTimeString() {
 class ScanCB : public BLEAdvertisedDeviceCallbacks {
   void onResult(BLEAdvertisedDevice dev) {
     if (dev.haveName() && dev.getName() == TARGET_NAME) {
-      Serial.printf("🔍 Found HM10: %s\n", dev.getName().c_str());
+      Serial.printf("Found HM10: %s\n", dev.getName().c_str());
       dev.getScan()->stop();
       targetAddr = new BLEAddress(dev.getAddress());
       doConnect = true;
@@ -53,7 +53,7 @@ bool bleConnect(BLEAddress &a) {
   pChar = svc->getCharacteristic(CHAR_UUID);
   if (!pChar) return false;
   bleOK = true;
-  Serial.println("✅ BLE connected!");
+  Serial.println("BLE connected!");
   return true;
 }
 
@@ -61,7 +61,7 @@ bool bleConnect(BLEAddress &a) {
 void bleSend(const char *msg) {
   if (bleOK && pChar) {
     pChar->writeValue((uint8_t*)msg, strlen(msg), false);
-    Serial.printf("📤 Sent BLE: %s\n", msg);
+    Serial.printf("Sent BLE: %s\n", msg);
   }
 }
 
@@ -111,9 +111,9 @@ void setup() {
   Serial.println("\n=== ESP32 Firebase BLE Gateway ===");
 
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-  Serial.print("🔌 Connecting WiFi");
+  Serial.print("Connecting WiFi");
   while (WiFi.status() != WL_CONNECTED) { Serial.print("."); delay(300); }
-  Serial.println("\n✅ WiFi connected!");
+  Serial.println("\nWiFi connected!");
 
   configTime(7 * 3600, 0, "pool.ntp.org", "time.nist.gov");
 
@@ -129,7 +129,7 @@ void setup() {
   else Serial.printf("Signup failed: %s\n", config.signer.signupError.message.c_str());
   Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
-  Serial.println("✅ Firebase ready!");
+  Serial.println("Firebase ready!");
 }
 
 unsigned long tScan = 0, tCheck = 0, tCmd = 0;
@@ -148,7 +148,7 @@ void loop() {
     tCheck = millis();
     String s = bleReadIfChanged();
     if (s.length() > 0) {
-      Serial.print("📩 BLE raw: "); Serial.println(s);
+      Serial.print("BLE raw: "); Serial.println(s);
       int p1 = s.indexOf(',');
       if (p1 > 0) {
         String code = s.substring(0, p1);
@@ -169,7 +169,7 @@ void loop() {
       if (cmd == "toggle" && bleOK) {
         bleSend("O\n");
         Firebase.RTDB.setString(&fbdo, "cmd_open", "none");
-        Serial.println("✅ Command: OPEN door (admin)");
+        Serial.println("Command: OPEN door (admin)");
       }
     }
 
@@ -179,7 +179,7 @@ void loop() {
       if (cmd == "add" && bleOK) {
         bleSend("R\n");
         Firebase.RTDB.setString(&fbdo, "cmd_add", "none");
-        Serial.println("✅ Command: ADD card");
+        Serial.println("Command: ADD card");
       }
     }
   }
