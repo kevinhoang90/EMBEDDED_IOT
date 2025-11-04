@@ -89,7 +89,7 @@ void applyToFirebase(const String &code, const String &id) {
       Firebase.RTDB.setString(&fbdo, path + "user", id);
     else
       Firebase.RTDB.setString(&fbdo, path + "user", "ADMIN");
-    Firebase.RTDB.setString(&fbdo, path + "time", now);
+    //Firebase.RTDB.setString(&fbdo, path + "time", now);
   }
 }
 
